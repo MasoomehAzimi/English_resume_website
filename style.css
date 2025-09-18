@@ -1,314 +1,376 @@
-body {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    padding-top: 80px; /* ارتفاع منو را جبران می‌کند */
-
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-  
-/* همه بخش‌ها که با لینک منو اسکرول می‌شوند */
-section {
-    padding: 50px 20px; /* فاصله بالا و پایین */
-    scroll-margin-top: 100px; /* برای لینک‌ها */
-  }
-  /* Header */
-  header {
-    position: fixed;      /* منو ثابت می‌شود */
-    top: 0;               /* بالای صفحه */
-    left: 0;
-    width: 100%;          /* تمام عرض */
-    z-index: 999;         /* بالاتر از بقیه عناصر */
-    background-color: #a5d6a7;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* سایه زیبا */
-  }
-  
-  .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    margin: 1px;
-    padding: 0 50px 0 0px;
-  }
-  
-  .navbar li {
-    margin-left: 20px;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #2e7d32;
-    font-weight: bold;
-  }
-  
-  .navbar a:hover {
-    color: #1b5e20;
-  }
-  
-  /* Welcome */
-  .welcome {
-    text-align: center;
-    padding: 50px 20px 0 20px;
-  }
-  
-  .welcome h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .welcome-line {
-    width: 100%;
-    height: 2px;
-    background-color: #2e7d32;
-    border: none;
-    margin-bottom: 0;
-  }
-  
-  .zoom-image {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 120px);
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .zoom-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  
-  .zoom-image:hover img {
-    transform: scale(1.1);
-  }
-  
-  /* Social buttons */
-  .social-buttons a {
-    text-decoration: none;
-    color: white;
-    background-color: #2e7d32;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .social-buttons a:hover {
-    background-color: #1b5e20;
-  }
-  
-  /* About */
-  .about {
-    padding: 50px 20px;
-    background-color: #e6f7e6;
-    color: #006400;
-  }
-  
-  .about h2 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 10px;
-  }
-  
-  .divider {
-    border: 0;
-    height: 1px;
-    background-color: #006400;
-    width: 80%;
-    margin: 0 auto 40px auto;
-  }
-  
-  .abstract{
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-  }
-
-  
-.abstract-text{
-    flex: 1;
-    font-size: 16px;
-    line-height: 1.8;
-    text-align: justify;
+/* ==============================
+   Reset & Body
+============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding-top: 80px; /* ارتفاع هدر */
+}
 
-  .bio {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-  }
-  
-  .bio-text {
-    flex: 1;
-    font-size: 16px;
-    line-height: 1.8;
-    text-align: justify;
-  }
-  
-  .bio-photo {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .bio-photo img {
-    max-width: 80%;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-  
-  /* Gallery */
-  .gallery {
-    text-align: center;
-    padding: 40px 0;
-  }
-  
-  .gallery-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 5px;
-    flex: 0 0 250px;
-    cursor: pointer;
-  }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  
-  .gallery-item:hover img {
-    transform: scale(1.2);
-  }
-  
-  /* Lightbox */
-  .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  
-  .lightbox-content {
-    max-width: 90vw;
-    max-height: 90vh;
-    margin: auto;
-    border-radius: 8px;
-    object-fit: contain;
-  }
-  
-  .lightbox-caption {
-    color: #fff;
-    margin-top: 15px;
-    text-align: center;
-  }
-  .lightbox.visible {
-    display: flex;   /* وقتی کلاس visible اضافه شد، flex شود */
-  }
-  
-  
-  .close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-  }
-  
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    padding: 16px;
-    user-select: none;
-  }
-  
-  .prev { left: 20px; }
-  .next { right: 20px; }
-  
-  .prev:hover, .next:hover, .close:hover {
-    color: #bbb;
-  }
-  
-  /* Contact */
-  .contact {
-    padding: 50px 20px;
-    text-align: center;
-  }
-  
+html {
+  scroll-behavior: smooth;
+}
 
-   /* Publication */
-   .publication {
-    padding: 50px 20px;
-    background-color: #e6f7e6;
-    color: #006400;
-  }
-  
-  .publication h2 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 10px;
-  }
-  
+/* ==============================
+ Container برای محتوا
+============================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-  /* وسط‌چین کردن عکس */
+/* ==============================
+ Header & Navbar
+============================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #a5d6a7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar li {
+  margin-left: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #1b5e20;
+}
+
+/* دکمه همبرگر */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2e7d32;
+}
+
+/* ==============================
+ Sections
+============================== */
+section {
+  padding: 50px 0;
+  scroll-margin-top: 100px;
+}
+
+.welcome {
+  text-align: center;
+  padding: 50px 20px 0 20px;
+}
+
+.welcome h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.welcome-line {
+  width: 100%;
+  height: 2px;
+  background-color: #2e7d32;
+  border: none;
+  margin-bottom: 0;
+}
+
+/* Zoom Image */
+.zoom-image {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 120px);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.zoom-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.zoom-image:hover img {
+  transform: scale(1.1);
+}
+
+/* Social Buttons */
+.social-buttons a {
+  text-decoration: none;
+  color: white;
+  background-color: #2e7d32;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.social-buttons a:hover {
+  background-color: #1b5e20;
+}
+
+/* About */
+.about {
+  background-color: #e6f7e6;
+  color: #006400;
+}
+
+.about h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: #006400;
+  width: 80%;
+  margin: 0 auto 40px auto;
+}
+
+/* Abstract & Bio */
+.abstract, .bio {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.abstract-text, .bio-text {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.bio-photo {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bio-photo img {
+  max-width: 80%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Gallery */
+.gallery {
+  text-align: center;
+}
+
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  flex: 0 0 250px;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.2);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  margin: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.lightbox-caption {
+  color: #fff;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.lightbox.visible {
+  display: flex;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 16px;
+  user-select: none;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.prev:hover, .next:hover, .close:hover {
+  color: #bbb;
+}
+
+/* Contact & Publication */
+.contact, .publication {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.publication {
+  background-color: #e6f7e6;
+  color: #006400;
+}
+
+.publication h2, .contact h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* Certificate */
 .certificate {
-    text-align: center;
-    padding: 100px 20px;
-  }
-  
-  .certificate-photo img {
-    max-width: 60%;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    opacity: 0;
-    transform: scale(0.7);
-    animation: zoomIn 1.5s ease forwards;
-  }
-  
-  /* انیمیشن بزرگ شدن */
-  @keyframes zoomIn {
-    to {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.certificate-photo img {
+  max-width: 60%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: scale(0.7);
+  animation: zoomIn 1.5s ease forwards;
+}
+
+@keyframes zoomIn {
+  to {
       opacity: 1;
       transform: scale(1);
-    }
   }
-  
-  
+}
+
+/* ==============================
+ Media Queries
+============================== */
+
+/* تبلت */
+@media (max-width: 768px) {
+  .bio, .abstract {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .bio-photo img, .abstract-text {
+      max-width: 100%;
+  }
+
+  /* Navbar موبایل */
+  .navbar ul {
+      display: none;
+      flex-direction: column;
+      background-color: #a5d6a7;
+      position: absolute;
+      top: 70px;
+      right: 0;
+      width: 200px;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+  }
+
+  .navbar ul.show {
+      display: flex;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+
+  .navbar li {
+      margin: 10px 0;
+  }
+}
+
+/* موبایل */
+@media (max-width: 480px) {
+  .welcome h2 {
+      font-size: 1.8rem;
+  }
+
+  .gallery-item {
+      flex: 0 0 100%;
+  }
+
+  .certificate-photo img {
+      max-width: 90%;
+  }
+}
